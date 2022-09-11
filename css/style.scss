@@ -1,0 +1,188 @@
+@use './variables' as *;
+@use './mixins' as *;
+
+*{
+    @include reset;
+    box-sizing: border-box;
+    font-family: 'Josefin sans';
+}
+
+body{
+    background-color: $bg-color;
+    color: $text-color;
+
+    a {
+        text-decoration: none;
+        color: $text-color;
+        transition: .4s;
+    }
+
+    ul{
+        list-style: none;
+    }
+}
+
+.header {
+    @include container;
+    @include flex-center;
+    justify-content: space-around;
+
+    @include mobile {
+        justify-content: center;    
+    }
+
+    @include tablet {
+        justify-content: space-around;            
+    }
+
+    &-brand {
+        color: $primary-color;
+        font-size: 3rem;
+        height: 100%
+    }
+
+    &-navbar {
+        
+        ul {
+            @include flex-center;
+            height: 100%;
+            
+            @include mobile {
+                display: none;
+            }
+
+            li {
+                margin: 0 1rem;
+                font-size: .8rem;
+                text-transform: uppercase;
+
+                .active {
+                    color: $secondary-color;
+                }
+
+                a {
+                    &:hover {
+                        color: $secondary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    &-social-media{
+
+        @include mobile {
+            display: none
+        }
+
+        @include tablet {
+            display: none;      
+        }
+
+        ul {
+            @include flex-center;
+            height: 100%;
+
+            li {
+                margin: 0 1rem;
+                
+                a {
+                    &:hover{
+                        font-size: 1.1rem;
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.gallery {
+    @include container;
+    @include grid;
+
+    @include mobile {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(9,26rem);
+        grid-row-gap: 2rem; 
+        padding: 2rem;
+    }
+
+    @include tablet {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(5, 26rem);
+        padding: 2rem;
+    }
+
+    &-card {
+        @include flex-center;
+        flex-direction: column;
+
+        &-title{
+            font-size: 2rem;
+            font-weight: 300; 
+            margin-bottom: 1rem; 
+            color: $primary-color;  
+        }
+
+        a{
+            color: $primary-color;
+            border: 2px solid $primary-color;
+            padding: .5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5rem;
+
+            &:hover{
+                background-color: $primary-color;
+                color: $bg-color;
+            }
+        }
+
+    }
+
+    #card-1{
+        @include bg-img('animais.jpg');
+    }
+
+    #card-2{
+        @include bg-img('arquitetura.jpg');
+    }
+
+    #card-3{
+        @include bg-img('cidade.jpg');
+    }
+
+    #card-4{
+        @include bg-img('decoracao.jpg');
+    }
+
+    #card-5{
+        @include bg-img('esportes.jpg');
+    }
+
+    #card-6{
+        @include bg-img('natureza.jpg');
+    }
+
+    #card-7{
+        @include bg-img('paisagem.jpg');
+    }
+
+    #card-8{
+        @include bg-img('pessoas.jpg');
+    }
+
+    #card-9{
+        @include bg-img('refeicoes.jpg');
+    }
+}
+
+footer{
+    @include flex-center;
+    padding: 1rem;
+
+    span {
+        color: $secondary-color;
+        font-weight: 400;
+    }
+}
